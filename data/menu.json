@@ -1,0 +1,89 @@
+[
+    {
+        "day": "Monday",
+        "breakfast": "Roti",
+        "lunch": "Chawal",
+        "dinner": "Raat Ka Khana"
+    },
+    {
+        "day": "Tuesday",
+        "slots": [
+            {
+                "time": "09:00",
+                "subject": "MA102: Linear Algebra",
+                "room": "L-1"
+            },
+            {
+                "time": "10:00",
+                "subject": "PH102: Physics Lab",
+                "room": "Lab Block 2"
+            },
+            {
+                "time": "11:00",
+                "subject": "HS101: English Communication",
+                "room": "L-5"
+            },
+            {
+                "time": "14:00",
+                "subject": "CS103: Digital Logic",
+                "room": "L-2"
+            }
+        ]
+    },
+    {
+        "day": "Wednesday",
+        "slots": [
+            {
+                "time": "09:00",
+                "subject": "CS104: Computer Workshop",
+                "room": "Workshop-1"
+            },
+            {
+                "time": "11:00",
+                "subject": "MA103: Probability",
+                "room": "L-3"
+            },
+            {
+                "time": "14:00",
+                "subject": "PH103: Mechanics",
+                "room": "L-1"
+            },
+            {
+                "time": "15:00",
+                "subject": "EE102: Electronics Lab",
+                "room": "Lab-2"
+            }
+        ]
+    },
+    {
+        "day": "Thursday",
+        "breakfast": "fnjdsk",
+        "lunch": "sdnjs",
+        "dinner": "dsnkd"
+    },
+    {
+        "day": "Friday",
+        "breakfast": "roti",
+        "lunch": "pani",
+        "dinner": "chawal"
+    },
+    {
+        "day": "Saturday",
+        "slots": [
+            {
+                "time": "09:00",
+                "subject": "CS108: DBMS",
+                "room": "L-2"
+            },
+            {
+                "time": "11:00",
+                "subject": "MA105: Numerical Methods",
+                "room": "L-4"
+            }
+        ]
+    },
+    {
+        "day": "Sunday",
+        "slots": []
+    }
+]

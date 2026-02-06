@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "item": "Engineering Calculator",
+        "price": "500 Credits",
+        "seller": "Rahul",
+        "status": "approved",
+        "color": "#334155"
+    },
+    {
+        "id": 2,
+        "item": "Lab Coat (M)",
+        "price": "200 Credits",
+        "seller": "Priya",
+        "status": "approved",
+        "color": "#475569"
+    },
+    {
+        "item": "Test Item 1770381362724",
+        "price": "100",
+        "seller": "Tester",
+        "image": "",
+        "id": 1770381362766,
+        "status": "approved"
+    },
+    {
+        "item": "mobile",
+        "price": "100",
+        "seller": "Jagjeet",
+        "image": "",
+        "color": "#3b82f6",
+        "id": 1770381447012,
+        "status": "approved"
+    }
+]

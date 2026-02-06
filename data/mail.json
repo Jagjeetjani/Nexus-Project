@@ -1,0 +1,38 @@
+[
+    {
+        "sender": "Admin Console",
+        "subject": "Registration Open!!",
+        "snippet": "Hello Registration are open",
+        "id": 1770377728246
+    },
+    {
+        "sender": "Jagjeet",
+        "subject": "urgent",
+        "snippet": "test mail",
+        "id": 1770375405076
+    },
+    {
+        "id": 1,
+        "sender": "Dean of Students",
+        "subject": "Varsity Week Announcement",
+        "snippet": "Dear Students, We are excited to announce the upcoming Varsity Week starting next Monday..."
+    },
+    {
+        "id": 2,
+        "sender": "Library Services",
+        "subject": "Overdue Book Notice",
+        "snippet": "This is a reminder that the book 'Introduction to Algorithms' is overdue. Please return it..."
+    },
+    {
+        "id": 3,
+        "sender": "Career Center",
+        "subject": "Internship Opportunities",
+        "snippet": "Check out the latest internship listings on our portal. Top tech companies are hiring..."
+    },
+    {
+        "id": 4,
+        "sender": "Campus Security",
+        "subject": "Lost keys found",
+        "snippet": "A set of keys was found near the gym. Please claim them at the security office."
+    }
+]
