@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nexus | Campus Super-App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo-icon">
+                <i class="fa-solid fa-atom"></i>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="sector-pulse" title="Pulse (Home)">
+                    <a href="#"><i class="fa-solid fa-house-signal"></i></a>
+                </li>
+                <li class="nav-item" data-target="sector-exchange" title="Student Exchange">
+                    <a href="#"><i class="fa-solid fa-handshake-simple"></i></a>
+                </li>
+                <li class="nav-item" data-target="sector-explorer" title="Explorer's Guide">
+                    <a href="#"><i class="fa-solid fa-map-location-dot"></i></a>
+                </li>
+                <li class="nav-item" data-target="sector-academics" title="Academic Cockpit">
+                    <a href="#"><i class="fa-solid fa-user-graduate"></i></a>
+                </li>
+            </ul>
+            <div class="bottom-actions">
+                <div class="sos-btn" title="Safety SOS">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="profile-icon" title="Profile">
+                    <a href="#"><i class="fa-solid fa-user-astronaut"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Dashboard Area -->
+        <main class="dashboard-area">
+
+            <!-- SECTOR 1: THE DAILY PULSE (Home) -->
+            <section id="sector-pulse" class="sector active">
+                <!-- Header -->
+                <header class="widget pulse-header">
+                    <div class="greeting">
+                        <h1>Welcome back, <span class="highlight">Cadet</span></h1>
+                        <p class="subtitle">System Status: Nominal • <span id="current-date">Fetching...</span></p>
+                    </div>
+                    <div class="system-info">
+                        <div class="weather">
+                            <i class="fa-solid fa-cloud-moon"></i>
+                            <span>24°C</span>
+                        </div>
+                        <div class="time" id="clock">--:--</div>
+                    </div>
+                </header>
+
+                <div class="widget-grid">
+                    <!-- Mess Menu -->
+                    <div class="widget mess-card">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-burger"></i> Mess Menu</h2>
+                            <span class="tag">Live Feed</span>
+                        </div>
+                        <div class="widget-content">
+                            <div class="food-display">
+                                <div class="food-img placeholder-glow"></div>
+                                <div class="food-info">
+                                    <h3>Galactic Pizza</h3>
+                                    <p>Pepperoni with extra stardust cheese.</p>
+                                    <small><i class="fa-solid fa-clock"></i> Lunch (12:00 - 14:00)</small>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button class="btn-neon"><i class="fa-solid fa-check-to-slot"></i> Vote</button>
+                                <button class="btn-text">View Weekly Menu</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timetable Summary -->
+                    <div class="widget timetable-card">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-calendar-days"></i> Next Up</h2>
+                        </div>
+                        <ul class="class-list">
+                            <li class="class-item live">
+                                <span class="time">14:00</span>
+                                <div class="details">
+                                    <span class="subject">Adv. Astrophysics</span>
+                                    <span class="location">Hall A1</span>
+                                </div>
+                                <span class="status-badge">LIVE</span>
+                            </li>
+                            <li class="class-item">
+                                <span class="time">16:30</span>
+                                <div class="details">
+                                    <span class="subject">Quantum Mechanics</span>
+                                    <span class="location">Lab 3</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Mail Intel -->
+                    <div class="widget mail-card">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-envelope"></i> Mail Intel</h2>
+                            <span class="badge-count">3</span>
+                        </div>
+                        <ul class="mail-list">
+                            <li class="mail-item">
+                                <div class="mail-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                                <div class="mail-content">
+                                    <span class="sender">Dean's Office</span>
+                                    <span class="subject">Urgent: Exam Schedule Update</span>
+                                </div>
+                            </li>
+                            <li class="mail-item">
+                                <div class="mail-icon"><i class="fa-solid fa-user-group"></i></div>
+                                <div class="mail-content">
+                                    <span class="sender">Robotics Club</span>
+                                    <span class="subject">Hackathon Registration Open</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn-neon secondary" onclick="toggleModal('mail-modal')"><i
+                                class="fa-solid fa-wand-magic-sparkles"></i> Summarize with AI</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTOR 2: STUDENT EXCHANGE -->
+            <section id="sector-exchange" class="sector">
+                <header class="sector-header">
+                    <h2><i class="fa-solid fa-handshake-simple"></i> The Exchange</h2>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="items">Marketplace</button>
+                        <button class="tab-btn" data-tab="travel">Travel Pool</button>
+                        <button class="tab-btn" data-tab="lostfound">Lost & Found</button>
+                    </div>
+                </header>
+
+                <!-- Marketplace Tab -->
+                <div class="tab-content active" id="tab-items">
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                        <button class="btn-neon small" onclick="toggleModal('modal-sell')"><i
+                                class="fa-solid fa-plus"></i> Sell Item</button>
+                    </div>
+                    <!-- Admin Only: Pending Approvals -->
+                    <div id="admin-pending-approvals"
+                        style="display: none; margin-bottom: 2rem; border-bottom: 1px solid #334155; padding-bottom: 1rem;">
+                        <h3 style="color: var(--neon-cyan); margin-bottom: 1rem;"><i class="fa-solid fa-gavel"></i>
+                            Pending Approvals</h3>
+                        <div class="marketplace-grid" id="pending-grid">
+                            <!-- Pending items injected here -->
+                        </div>
+                    </div>
+                    <div class="marketplace-grid" id="main-market-grid">
+                        <!-- Items injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Travel Pool Tab -->
+                <div class="tab-content" id="tab-travel">
+                    <div class="travel-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="widget">
+                            <h3><i class="fa-solid fa-car"></i> Offer/Request Ride</h3>
+                            <div class="crud-group">
+                                <input type="text" id="travel-from" placeholder="From (e.g. Campus)">
+                                <input type="text" id="travel-to" placeholder="To (e.g. Sector 17)">
+                                <input type="time" id="travel-time">
+                                <input type="text" id="travel-contact" placeholder="Phone/Details">
+                                <button class="btn-neon" onclick="postTravel()">Post Plan</button>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <h3><i class="fa-solid fa-list"></i> Active Pools</h3>
+                            <div id="travel-list" style="margin-top: 1rem; max-height: 300px; overflow-y: auto;">
+                                <!-- JS Injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lost & Found Tab -->
+                <div class="tab-content" id="tab-lostfound">
+                    <div class="list-view">
+                        <!-- JS Injected -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTOR 3: EXPLORER'S GUIDE -->
+            <section id="sector-explorer" class="sector">
+                <div class="sector-header">
+                    <h2><i class="fa-solid fa-map-location-dot"></i> Campus Navigator - IIT Ropar</h2>
+                </div>
+
+                <div class="explorer-layout">
+                    <!-- Map Display -->
+                    <div class="map-container widget">
+                        <div class="map-placeholder" id="campus-map"
+                            style="position: relative; background: #0f172a; height: 100%;">
+                            <!-- Simple SVG Map Representation -->
+                            <svg width="100%" height="100%" viewBox="0 0 800 600" style="opacity: 0.8;">
+                                <!-- Roads -->
+                                <path d="M100 300 H700" stroke="#334155" stroke-width="20" />
+                                <path d="M400 50 V550" stroke="#334155" stroke-width="20" />
+
+                                <!-- Buildings -->
+                                <rect x="350" y="250" width="100" height="100" fill="#00f3ff" opacity="0.2" />
+                                <!-- Senate (Center) -->
+                                <text x="365" y="305" fill="#fff" font-size="12">Senate</text>
+
+                                <rect x="150" y="100" width="80" height="120" fill="#bc13fe" opacity="0.2" />
+                                <!-- Hostels -->
+                                <text x="160" y="160" fill="#fff" font-size="12">Brahmaputra</text>
+
+                                <rect x="550" y="400" width="120" height="80" fill="#ef4444" opacity="0.2" />
+                                <!-- LHC -->
+                                <text x="590" y="445" fill="#fff" font-size="12">LHC</text>
+
+                                <rect x="550" y="100" width="100" height="100" fill="#facc15" opacity="0.2" />
+                                <!-- Library -->
+                                <text x="580" y="155" fill="#fff" font-size="12">Library</text>
+
+                                <rect x="50" y="280" width="40" height="40" fill="#4ade80" opacity="0.2" />
+                                <!-- Gate -->
+                                <text x="55" y="305" fill="#fff" font-size="10">Gate</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Controls -->
+                    <div class="widget">
+                        <h3><i class="fa-solid fa-diamond-turn-right"></i> Smart Navigate</h3>
+                        <div class="crud-group">
+                            <label>From</label>
+                            <select id="nav-from" class="nav-select">
+                                <option value="Gate">Main Gate</option>
+                                <option value="Brahmaputra">Brahmaputra Hostel</option>
+                                <option value="Senate">Senate Block</option>
+                                <option value="Library">Library</option>
+                                <option value="LHC">LHC Complex</option>
+                            </select>
+
+                            <label>To</label>
+                            <select id="nav-to" class="nav-select">
+                                <option value="Gate">Main Gate</option>
+                                <option value="Brahmaputra">Brahmaputra Hostel</option>
+                                <option value="Senate">Senate Block</option>
+                                <option value="Library">Library</option>
+                                <option value="LHC">LHC Complex</option>
+                            </select>
+
+                            <button class="btn-neon" onclick="calculateRoute()"
+                                style="width: 100%; margin-top: 10px;">Get Directions</button>
+                        </div>
+
+                        <div id="nav-result"
+                            style="margin-top: 1rem; padding: 1rem; background: rgba(0,255,0,0.1); border-radius: 8px; display: none;">
+                            <h4 style="color: #4ade80;">Route Found!</h4>
+                            <p id="nav-text" style="font-size: 0.9rem; margin-top: 5px;"></p>
+                        </div>
+
+                        <div class="hub-list">
+                            <h4>Nearby Hubs</h4>
+                            <li class="hub-item open">
+                                <span>Juice Canteen</span> <span class="status">OPEN</span>
+                            </li>
+                            <li class="hub-item closed">
+                                <span>Nescafe</span> <span class="status">CLOSED</span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTOR 4: ACADEMIC COCKPIT -->
+            <section id="sector-academics" class="sector">
+                <header class="sector-header">
+                    <h2><i class="fa-solid fa-user-graduate"></i> Academic Cockpit</h2>
+                </header>
+                <div class="academic-grid">
+                    <div class="widget lms-lite">
+                        <h3><i class="fa-solid fa-book-open"></i> Assignments (LMS)</h3>
+                        <ul class="assignment-list">
+                            <li class="assign-item">
+                                <div class="header">
+                                    <span>Calculus II</span>
+                                    <span class="due due-soon">Due: 2 Hrs</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="fill" style="width: 80%;"></div>
+                                </div>
+                            </li>
+                            <li class="assign-item">
+                                <div class="header">
+                                    <span>Physics Lab Report</span>
+                                    <span class="due">Due: Tomorrow</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="fill" style="width: 30%;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="widget ai-tutor">
+                        <h3><i class="fa-solid fa-brain"></i> Academic Intelligence</h3>
+                        <div class="chat-interface">
+                            <div class="chat-msg ai">Hello Cadet. How can I assist with your studies?</div>
+                            <div class="chat-msg user">Summarize the last lecture on Quantum Entanglement.</div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Query the database...">
+                                <button><i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="mail-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-btn" onclick="toggleModal('mail-modal')">&times;</span>
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> AI Summary</h2>
+            <div class="summary-text">
+                <p><strong>Processing 3 New Emails:</strong></p>
+                <ul>
+                    <li><strong>Dean's Office:</strong> Finals pushed back by 2 days. New schedule attached.</li>
+                    <li><strong>Robotics Club:</strong> Registration ends tonight. Team "Titan" needs a coder.</li>
+                    <li><strong>Cafe:</strong> Your order for "Cosmic Latte" is ready.</li>
+                </ul>
+                <div class="ai-actions">
+                    <button class="btn-neon small">Archive All</button>
+                    <button class="btn-neon small secondary">Reply to Dean</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sell Modal -->
+    <div id="modal-sell" class="modal">
+        <div class="glass-panel">
+            <span class="close-btn" onclick="toggleModal('modal-sell')">&times;</span>
+            <h2 style="margin-bottom: 1rem; color: var(--neon-cyan);">Sell on Nexus</h2>
+            <div class="crud-group">
+                <input type="text" id="sell-item" placeholder="Item Name"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white;">
+                <input type="text" id="sell-price" placeholder="Price (e.g. 500 Credits)"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white;">
+                <input type="text" id="sell-seller" placeholder="Your Name"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white;">
+                <input type="text" id="sell-image" placeholder="Image URL (optional)"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white;">
+                <button class="btn-neon" onclick="postSellItem()" style="width: 100%;">Submit for Approval</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

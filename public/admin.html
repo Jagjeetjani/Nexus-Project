@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Ops | Admin Console</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@500;700&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Admin Specific Overrides */
+        :root {
+            --accent-color: #ff4500;
+            /* Default Admin Orange */
+        }
+
+        /* Adjustments for Admin Inputs within Glass UI */
+        .crud-group {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .crud-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .crud-group input,
+        .crud-group select,
+        .crud-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 8px;
+            font-family: var(--font-main);
+        }
+
+        .crud-group input:focus,
+        .crud-group select:focus,
+        .crud-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.2);
+        }
+
+        .action-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .action-btn:hover {
+            box-shadow: 0 0 20px var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Table Styles */
+        .data-table-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .data-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Color Picker in Header */
+        .theme-picker-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        #accent-picker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="logo-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="sector-dashboard">
+                    <a href="#"><i class="fa-solid fa-chart-line"></i></a>
+                </li>
+                <li class="nav-item" data-target="sector-academics">
+                    <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
+                </li>
+                <li class="nav-item" data-target="sector-users">
+                    <a href="#"><i class="fa-solid fa-users"></i></a>
+                </li>
+            </ul>
+
+            <div class="bottom-actions">
+                <div class="profile-icon">
+                    <a href="index.html" title="Back to Student Portal"><i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- DASHBOARD AREA -->
+        <main class="dashboard-area">
+
+            <!-- SECTOR: DASHBOARD (BROADCAST) -->
+            <section id="sector-dashboard" class="sector active">
+                <div class="pulse-header">
+                    <div class="greeting">
+                        <h1>ADMIN <span class="highlight">CONSOLE</span></h1>
+                        <p class="subtitle">System Status: ONLINE</p>
+                    </div>
+
+                    <div class="system-info">
+                        <div class="theme-picker-container">
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">THEME</span>
+                            <input type="color" id="accent-picker" value="#ff4500">
+                        </div>
+                        <div class="time" id="admin-clock">00:00</div>
+                    </div>
+                </div>
+
+                <div class="widget-grid" style="margin-top: 2rem;">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-tower-broadcast"></i> Broadcast Station</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="crud-group">
+                                <label>Subject</label>
+                                <input type="text" id="mail-subject" placeholder="Important Announcement...">
+
+                                <label>Message</label>
+                                <textarea id="mail-body" rows="4" placeholder="Type your message here..."></textarea>
+
+                                <button class="action-btn" id="mail-send-btn">TRANSMIT TO ALL</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Stats -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-server"></i> System Metrics</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div
+                                    style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h3 style="font-size: 2rem; color: #4ade80;">98%</h3>
+                                    <p style="color: var(--text-muted); font-size: 0.8rem;">Uptime</p>
+                                </div>
+                                <div
+                                    style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h3 style="font-size: 2rem; color: var(--accent-color);" id="user-count-display">-
+                                    </h3>
+                                    <p style="color: var(--text-muted); font-size: 0.8rem;">Active Users</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTOR: ACADEMICS (MESS & TIMETABLE) -->
+            <section id="sector-academics" class="sector">
+                <div class="sector-header">
+                    <h2>ACADEMIC CONTROLS</h2>
+                </div>
+
+                <div class="widget-grid">
+                    <!-- Mess Manager -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-utensils"></i> Mess Manager</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="crud-group">
+                                <label>Select Day</label>
+                                <select id="mess-day-select">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+
+                            <div class="crud-group">
+                                <label>Breakfast</label>
+                                <input type="text" id="mess-breakfast">
+
+                                <label>Lunch</label>
+                                <input type="text" id="mess-lunch">
+
+                                <label>Dinner</label>
+                                <input type="text" id="mess-dinner">
+
+                                <button class="action-btn" id="mess-save-btn">UPDATE MENU</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timetable Overlord -->
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-clock"></i> Timetable Overlord</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="crud-group">
+                                <label>Add New Class</label>
+                                <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 10px;">
+                                    <input type="time" id="tt-time">
+                                    <input type="text" id="tt-subject" placeholder="Subject">
+                                    <input type="text" id="tt-room" placeholder="Room">
+                                </div>
+                                <button class="action-btn" id="tt-add-btn" style="margin-top: 5px;">ADD CLASS</button>
+                            </div>
+
+                            <div class="data-table-container">
+                                <table class="data-table" id="timetable-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Subject</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTOR: USERS & MARKET -->
+            <section id="sector-users" class="sector">
+                <div class="sector-header">
+                    <h2>USER MANIFEST</h2>
+                </div>
+
+                <div class="widget-grid">
+                    <!-- User Management -->
+                    <div class="widget" style="grid-column: span 1;">
+                        <div class="widget-header">
+                            <h3>Users</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="crud-group">
+                                <input type="text" id="user-name" placeholder="Username" style="margin-bottom: 5px;">
+                                <input type="text" id="user-role" placeholder="Role">
+                                <button class="action-btn" id="user-add-btn" style="margin-top: 10px;">ADD USER</button>
+                            </div>
+                            <div class="data-table-container">
+                                <table class="data-table" id="user-list">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Role</th>
+                                            <th>Act</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketplace Approvals -->
+                    <div class="widget" style="grid-column: span 1;">
+                        <div class="widget-header">
+                            <h3>Market Approvals</h3>
+                        </div>
+                        <div class="widget-content">
+                            <div class="data-table-container">
+                                <table class="data-table" id="market-list">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Seller</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="market-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lost & Found Manager -->
+                    <div class="widget" style="grid-column: span 2;">
+                        <div class="widget-header">
+                            <h2><i class="fa-solid fa-glasses"></i> Lost & Found Manager</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="crud-group">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                                    <input type="text" id="lf-item" placeholder="Item Name">
+                                    <input type="text" id="lf-desc" placeholder="Description">
+                                    <input type="text" id="lf-loc" placeholder="Location Found">
+                                </div>
+                                <button class="action-btn" id="lf-add-btn" style="margin-top: 10px;">REPORT FOUND
+                                    ITEM</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;"></div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
